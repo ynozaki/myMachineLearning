@@ -31,6 +31,18 @@ $git reset —hard HEAD
 Or, only specified file(s),
 $git checkout HEAD “file”
 
+#Revert
+$git reset —hard HEAD (if need)
+$git revert “commit ID”
+
+#Rebase
+$git reset —hard HEAD^
+$git rebase -i “commit ID”
+After rebasement, do
+$git rebase —amend
+And to resume, do
+$git rebase -continue
+
 #Remove
 $git rm “file”
 If you wish to remove only from index, do
@@ -43,9 +55,17 @@ $git mv “before” “after”
 #Unstage
 $git reset HEAD “file”
 
+#Clone
+$git clone “Path to the folder to be cloned” “folder to be created”
+
+#Pull
+$git pull “Path to the folder to be pulled”
+
 #Show
 $git show (to see the latest commit ID)
 $git statue (to see On branch master)
 $git log
 $git log —oneline
+$git diff “old” “new”
+
 
