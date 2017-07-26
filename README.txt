@@ -3,10 +3,15 @@ To see options, enter ’command’ -h
 
 ##Some useful commands
 #Set up
+$git init
 $git remote origin “URL”
+($git remote add origin git@github.com:xxx/xxx.git)
+($git push -u origin master)
 $git remote set-url origin “new URL”
 $git config —global user.name “”
 $git config —global user.email xx@xx.xx
+$git config —global core.editor emacs
+$ . /usr/local/git/contrib/completion/git-completion.bash
 
 #Add
 $git add “file” 
@@ -30,6 +35,10 @@ $git reset —hard HEAD
 (Here, “HEAD” means the latest commit ID. HEAD~ means the one just before the latest ver)
 Or, only specified file(s),
 $git checkout HEAD “file”
+
+#Merge
+$git checkout “Branch to change”
+$git merge “Branch to be extracted changes”
 
 #Revert
 $git reset —hard HEAD (if need)
@@ -59,13 +68,30 @@ $git reset HEAD “file”
 $git clone “Path to the folder to be cloned” “folder to be created”
 
 #Pull
-$git pull “Path to the folder to be pulled”
+$git pull “Path to the folder to be pulled” “branch(master)”
+
+#Create new branch
+$git branch “new branch”
+->then $git checkout “new branch”, to switch.
 
 #Show
 $git show (to see the latest commit ID)
 $git statue (to see On branch master)
 $git log
-$git log —oneline
+$git log —-oneline
+$git log —-graph —-all —-format=“%x09%an%x09%h %d %s”
+$git config --global alias.tree 'log --graph --all --format="%x09%C(cyan bold)%an%Creset %x09%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"'  
 $git diff “old” “new”
+$git branch
 
+#Stash
+$git stash (or stash save “comment”)
+$git stash list
+$git stash pop (or stash apply)
 
+#Change your email address
+$git filter-branch —env-filter ‘GIT_AUTHOER_EMAIL=“hoge@hohemail.com”’ HEAD
+$git filter-branch —env-filter ‘GIT_AUTHOER_EMAIL=“hoge@hohemail.com”’ — —all
+(before do it, do for safety: $cp -r ../project ../project.back)
+
+For more detail, go Kawanabe Masanori’s Web, “Zarigani ga miteta…”. Good luck!
